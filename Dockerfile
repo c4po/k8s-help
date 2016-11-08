@@ -1,6 +1,6 @@
 FROM  buildpack-deps:latest
 
-RUN apt-get install unzip python python-pip
+RUN apt-get update && apt-get install unzip
 
 WORKDIR /tmp
 
@@ -24,13 +24,19 @@ RUN curl -sSL -O https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_
 
 ENV K8S_VERSION # for kubectl & kops
 
-RUN curl -sSL https://storage.googleapis.com/kubernetes-release/release/v${K8S_VERSION}/bin/linux/amd64/kubectl >/usr/local/bin/kubectl \
+RUN curl -sSL -O https://storage.googleapis.com/kubernetes-release/release/v${K8S_VERSION}/bin/linux/amd64/kubectl \
+    && mv kubectl /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl
-RUN curl -sSL https://github.com/kubernetes/kops/releases/download/v${K8S_VERSION}/kops-linux-amd64 >/usr/local/bin/kops \
+RUN curl -sSL -O https://github.com/kubernetes/kops/releases/download/v${K8S_VERSION}/kops-linux-amd64 \
+    && mv kops-linux-amd64 /usr/local/bin/kops \
     && chmod +x /usr/local/bin/kops
 
 
-RUN pip install awscli
+RUN curl -sSL -O https://s3.amazonaws.com/aws-cli/awscli-bundle.zip \
+    && unzip awscli-bundle.zip \
+    && ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws \
+    && rm awscli-bundle.zip \
+    && rm -rf awscli-bundle
 
 
 
