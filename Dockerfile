@@ -1,5 +1,7 @@
 FROM  buildpack-deps:latest
 
+RUN apt-get install unzip python python-pip
+
 WORKDIR /tmp
 
 ENV DOCKER_VERSION 1.12.0
@@ -28,7 +30,7 @@ RUN curl -sSL https://github.com/kubernetes/kops/releases/download/v${K8S_VERSIO
     && chmod +x /usr/local/bin/kops
 
 
-RUN apt-get install python python-pip && pip install awscli
+RUN pip install awscli
 
 
 
