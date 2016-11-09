@@ -22,7 +22,7 @@ RUN curl -sSL -O https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_
     && rm packer_${PACKER_VERSION}_linux_amd64.zip \
     && mv packer /usr/local/bin
 
-ENV K8S_VERSION 1.4.1 # for kubectl & kops
+ENV K8S_VERSION 1.4.1
 
 RUN curl -sSL -O https://storage.googleapis.com/kubernetes-release/release/v${K8S_VERSION}/bin/linux/amd64/kubectl \
     && mv kubectl /usr/local/bin/kubectl \
