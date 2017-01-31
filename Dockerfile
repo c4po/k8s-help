@@ -31,12 +31,8 @@ RUN curl -sSL -O https://github.com/kubernetes/kops/releases/download/v${K8S_VER
     && mv kops-linux-amd64 /usr/local/bin/kops \
     && chmod +x /usr/local/bin/kops
 
-
 RUN curl -sSL -O https://s3.amazonaws.com/aws-cli/awscli-bundle.zip \
     && unzip awscli-bundle.zip \
     && ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws \
     && rm awscli-bundle.zip \
     && rm -rf awscli-bundle
-
-
-
