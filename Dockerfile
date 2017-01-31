@@ -27,7 +27,9 @@ ENV K8S_VERSION 1.5.2
 RUN curl -sSL -O https://storage.googleapis.com/kubernetes-release/release/v${K8S_VERSION}/bin/linux/amd64/kubectl \
     && mv kubectl /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl
-RUN curl -sSL -O https://github.com/kubernetes/kops/releases/download/v${K8S_VERSION}/kops-linux-amd64 \
+
+ENV KOPS_VERSION 1.4.4
+RUN curl -sSL -O https://github.com/kubernetes/kops/releases/download/v${KOPS_VERSION}/kops-linux-amd64 \
     && mv kops-linux-amd64 /usr/local/bin/kops \
     && chmod +x /usr/local/bin/kops
 
