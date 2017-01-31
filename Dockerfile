@@ -1,6 +1,6 @@
 FROM  buildpack-deps:latest
 
-RUN apt-get update && apt-get install unzip python-dev
+RUN apt-get update && apt-get -y install unzip python-dev
 
 WORKDIR /tmp
 
