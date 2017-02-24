@@ -9,6 +9,10 @@ RUN curl -sSL -O https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERS
     && tar zxf docker-${DOCKER_VERSION}.tgz -C /tmp \
     && rm docker-${DOCKER_VERSION}.tgz \
     && mv /tmp/docker/* /usr/local/bin
+    
+ENV COMPOSE_VERSION 1.11.1
+RUN curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/run.sh > /usr/local/bin/docker-compose \
+    && chmod +x /usr/local/bin/docker-compose
 
 ENV TERRAFORM_VERSION 0.8.5
 RUN curl -sSL -O https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
