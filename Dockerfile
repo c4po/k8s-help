@@ -42,3 +42,9 @@ RUN curl -sSL -O https://s3.amazonaws.com/aws-cli/awscli-bundle.zip \
     && ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws \
     && rm awscli-bundle.zip \
     && rm -rf awscli-bundle
+
+ENV HELM_VERSION 2.3.0
+RUN curl -sSL -O https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+    && tar zxf helm-v${HELM_VERSION}-linux-amd64.tar.gz -C /tmp \
+    && rm helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+    && mv /tmp/linux-amd64/helm /usr/local/bin
