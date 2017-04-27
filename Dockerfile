@@ -14,13 +14,13 @@ ENV COMPOSE_VERSION 1.11.2
 RUN curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-Linux-x86_64 > /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose
 
-ENV TERRAFORM_VERSION 0.8.8
+ENV TERRAFORM_VERSION 0.9.4
 RUN curl -sSL -O https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     && mv terraform /usr/local/bin
 
-ENV PACKER_VERSION 0.12.3
+ENV PACKER_VERSION 1.0.0
 RUN curl -sSL -O https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip \
     && unzip packer_${PACKER_VERSION}_linux_amd64.zip \
     && rm packer_${PACKER_VERSION}_linux_amd64.zip \
