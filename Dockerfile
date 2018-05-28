@@ -1,6 +1,6 @@
 FROM  buildpack-deps:latest
 
-RUN apt-get update && apt-get -y install unzip python-dev jq
+RUN apt-get update && apt-get -y install unzip python-dev jq gettext
 
 WORKDIR /tmp
 
